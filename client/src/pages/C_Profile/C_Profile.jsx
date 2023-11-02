@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./C_Profile.css";
-import {FaRegUser} from "react-icons/fa"
+import { FaRegUser } from "react-icons/fa"
 import { Input, message } from "antd";
 import axios from "axios";
 import Logo from "../../components/Logo/Logo";
@@ -8,8 +8,118 @@ import { useNavigate } from "react-router-dom";
 const { TextArea } = Input;
 
 const C_Profile = () => {
-  const handleFormSubmit = async (e) => {};  
 
+  useEffect(() => {
+    async function fetchShopDetails() {
+      const response = await axios.get('http://localhost:3001/shop-details/6377793312');
+      setShopDetails(response.data);
+    }
+
+    fetchShopDetails();
+    console.log('waiting');
+    console.log(fetchShopDetails());
+  }, []);
+
+  const [shopdetails, setShopDetails] = useState([]);
+  const full_name = shopdetails.first_name + " " + shopdetails.last_name;
+  const email = shopdetails.email;
+  const number = shopdetails.number;
+  const shop_name = shopdetails.shop_name;
+  const city = shopdetails.city;
+  const area = shopdetails.area;
+  const type = shopdetails.type;
+  const category = shopdetails.category;
+  const [address, setAddress] = useState('');
+  const [timing, setTiming] = useState('');
+  const [deliveryOption, setDeliveryOption] = useState('');
+  const [shopDescription, setShopDescription] = useState('');
+  const [productsAndServices, setProductsAndServices] = useState('');
+  
+
+  const handleAddress = (e) => {
+    setAddress(e.target.value);
+  };
+
+  const handleTiming = (e) => {
+    setTiming(e.target.value);
+  };
+
+  const handleDeliveryOption = (e) => {
+    setDeliveryOption(e.target.value);
+  };
+
+  const handleShopDescriptionChange = (e) => {
+    setShopDescription(e.target.value);
+  };
+
+  const handleProductsAndServicesChange = (e) => {
+    setProductsAndServices(e.target.value);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+
+      const response = await axios.post('http://localhost:3001/update-profile', {
+          full_name,
+          email,
+          number,
+          shop_name,
+          city,
+          area,
+          type,
+          category,
+          address,
+          timing,
+          deliveryOption,
+          shopDescription,
+          productsAndServices,
+      });
+
+
+
+      // const response = await axios.post(
+      //   'http://localhost:3001/update-profile',
+      //   {
+      //     body: JSON.stringify({
+      //       full_name,
+      //       email,
+      //       number,
+      //       shop_name,
+      //       city,
+      //       area,
+      //       type,
+      //       category,
+      //       address,
+      //       timing,
+      //       deliveryOption,
+      //       shopDescription,
+      //       productsAndServices,
+      //     })
+
+      //   }
+      // );
+      console.log("printing data");
+      console.log(full_name);
+      console.log(response.data);
+      alert("Student profile updated successfully!");
+      // }
+    } catch (error) {
+      console.log('ero')
+      console.log(full_name);
+      console.error(error);
+    }
+  };
+
+
+  
+
+  
+
+  
+
+  
 
 
   return (
@@ -21,12 +131,13 @@ const C_Profile = () => {
             <div className="c_profile_logo">
               <FaRegUser />
             </div>
-            <div className="c_full_name">srk</div>
-            <div className="c_email">srk@gmail.com</div>
+            <div className="c_full_name">{shopdetails.first_name + " " + shopdetails.last_name}</div>
+            <div className="c_email">{shopdetails.email}</div>
           </div>
         </div>
         <div className="c_profile_right">
-          <form onSubmit={handleFormSubmit} className="c_form">
+          {/* <form onSubmit={handleFormSubmit} className="c_form"> */}
+          <form className="c_form">
             <div className="c_full_form">
               <div className="form_SR_inputs_c_profile">
                 <div className="mb-3_cp">
@@ -36,7 +147,7 @@ const C_Profile = () => {
                       required
                       name="first_name"
                       type="text"
-                      placeholder="Full Name"
+                      value={shopdetails.first_name + " " + shopdetails.last_name}
                     />
                   </div>
 
@@ -46,7 +157,7 @@ const C_Profile = () => {
                       required
                       name="last_name"
                       type="text"
-                      placeholder="Email-id"
+                      value={shopdetails.email}
                     />
                   </div>
                 </div>
@@ -60,7 +171,7 @@ const C_Profile = () => {
                       required
                       name="first_name"
                       type="text"
-                      placeholder="Mobile Number"
+                      value={shopdetails.number}
                     />
                   </div>
 
@@ -70,7 +181,7 @@ const C_Profile = () => {
                       required
                       name="last_name"
                       type="text"
-                      placeholder="Business Name"
+                      value={shopdetails.shop_name}
                     />
                   </div>
                 </div>
@@ -85,6 +196,7 @@ const C_Profile = () => {
                       name="first_name"
                       type="text"
                       placeholder="Eg. Jaipur, Rajasthan"
+                      value={shopdetails.city}
                     />
                   </div>
 
@@ -95,6 +207,7 @@ const C_Profile = () => {
                       name="last_name"
                       type="text"
                       placeholder="eg. Vidhyadhar Nagar"
+                      value={shopdetails.area}
                     />
                   </div>
                 </div>
@@ -108,7 +221,7 @@ const C_Profile = () => {
                       required
                       name="first_name"
                       type="text"
-                      placeholder="Business Type"
+                      value={shopdetails.type}
                     />
                   </div>
 
@@ -119,6 +232,7 @@ const C_Profile = () => {
                       name="last_name"
                       type="text"
                       placeholder="Category of Selected Business Type"
+                      value={shopdetails.category}
                     />
                   </div>
                 </div>
@@ -133,6 +247,8 @@ const C_Profile = () => {
                       name="first_name"
                       type="text"
                       placeholder="Enter Shop Full Address"
+                      value={address}
+                      onChange={handleAddress}
                     />
                   </div>
 
@@ -143,6 +259,8 @@ const C_Profile = () => {
                       name="last_name"
                       type="text"
                       placeholder="Eg. 9:00AM - 9:00PM"
+                      value={timing}
+                      onChange={handleTiming}
                     />
                   </div>
                 </div>
@@ -167,6 +285,8 @@ const C_Profile = () => {
                       name="last_name"
                       type="text"
                       placeholder="Eg. Yes or No"
+                      value={deliveryOption}
+                      onChange={handleDeliveryOption}
                     />
                   </div>
                 </div>
@@ -179,6 +299,8 @@ const C_Profile = () => {
                   name="last_name"
                   type="text"
                   placeholder="Description About Shop"
+                  value={shopDescription}
+                  onChange={handleShopDescriptionChange}
                   rows={3}
                 />
               </div>
@@ -190,23 +312,25 @@ const C_Profile = () => {
                   name="last_name"
                   type="text"
                   placeholder="Eg- RC Car: 1200rs, Teddy: 200rs.... "
+                  value={productsAndServices}
+                  onChange={handleProductsAndServicesChange}
                   rows={3}
                 />
               </div>
             </div>
-            <button type="submit" className="CP_form_btn">
-                  Submit
-                </button>
+            <button type="submit" className="CP_form_btn" onClick={submitHandler}>
+              Submit
+            </button>
           </form>
         </div>
       </div>
 
       <div className="SR_LOGO">
-          <Logo />
-        </div>
+        <Logo />
+      </div>
 
     </div>
-    
+
   );
 };
 

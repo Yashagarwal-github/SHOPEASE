@@ -9,11 +9,11 @@ const ProfileSchema = new mongoose.Schema({
     area:String,
     type:String,
     category:String,
-    shop_address: String,
-    shop_timing: String,
-    delivery_option: String,
-    shop_desc: String,
-    prod_and_ser: String
+    address: String,
+    timing: String,
+    deliveryOption: String,
+    shopDescription: String,
+    productsAndServices: String
 })
 
 const ProfileModel = mongoose.model("Profile", ProfileSchema)
