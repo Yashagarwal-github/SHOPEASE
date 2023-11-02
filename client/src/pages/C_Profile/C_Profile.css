@@ -1,0 +1,145 @@
+.c_profile{
+    background-color: #d9d9d9;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.c_profile_form{
+    margin-top: 3rem;
+    background-color: white;
+    width: 75rem;
+    border-radius: 3rem;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
+}
+
+.c_profile_left h1{
+    margin: 0;
+}
+
+.c_profile_left{
+    width: 23rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 18rem;
+    background-color: #ff3131;
+    color: white;
+
+}
+
+.c_profile_logo{
+    font-size: 7rem;
+    padding-top: 2rem;
+}
+
+.c_profile_right{
+    width: 52rem;
+
+}
+
+.c_form{
+    padding-top: 3rem;
+}
+
+.form_SR_inputs_c_profile{
+    display: flex;
+    
+}
+
+.mb-3_cp .ant-input{
+    width: 20rem;
+    margin-top: .5rem;
+    margin-right: 5rem;
+
+
+}
+
+.mb-3_cp{
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+
+}
+
+.form_title_cp{
+    text-align: left;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_title_cp_long{
+    padding-left: 3rem;
+    text-align: left;
+    padding-bottom: 2rem;
+    font-weight: bold;
+
+
+}
+
+.form_title_cp_long .ant-input{
+    width: 45rem;
+    margin-top: .5rem;
+}
+
+.c_full_name{
+    font-weight: bold;
+
+}
+
+.c_email{
+    font-weight: bold;
+
+
+}
+
+
+.c_profile_left_main{
+
+}
+
+.CP_form_btn{
+    align-items: center;
+    background-color: #000000;
+    border: 0;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+      "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+      "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    text-decoration: none;
+    width: 150px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+      box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+      color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  
+  }

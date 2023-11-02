@@ -1,0 +1,52 @@
+.dropDownProfile {
+    position: absolute;
+    top: 7.5rem;
+    right: .7rem;
+    width: 178px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #d9d9d9;
+    color: white;
+    z-index: 111;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;}
+  
+  .dropDownProfile ul {
+    list-style-type: none;
+  }
+  
+  .dropDownProfile li {
+    background-color: white;
+    margin-bottom: 1rem;
+    color: black;
+    padding: 0.3rem;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    width: 8.9rem;
+    margin-left: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+
+  
+  .User_name {
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 700;
+  }
+
+  .User_name hr{
+    border-color: black;
+  }
+  
+  .gap-4 {
+    padding: 0;
+  }
+  
+  .Logout_icon {
+    padding-right: 0.5rem;
+    font-size: 1rem;
+    color: red;
+    font-weight: 700;
+  }
+  

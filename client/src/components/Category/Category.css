@@ -1,0 +1,30 @@
+.categories_items_section {
+    /* background-color: green; */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+}
+
+.category_item{
+    margin: 2.5rem;
+    text-decoration: none;
+    margin-top: 5rem;
+    padding: .5rem;
+  }
+
+  .categories_name_modal{
+    color: black;
+    font-weight: 600;
+    margin-top: .5rem;
+    font-size: 1.1rem;
+
+  }
+
+  .category_image{
+    width: 5rem;
+    height: 5rem;
+
+  }

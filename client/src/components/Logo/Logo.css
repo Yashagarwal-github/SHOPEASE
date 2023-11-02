@@ -1,0 +1,28 @@
+.logo_main{
+    display: flex;
+    height: 4rem;
+    width: 26rem;
+    align-items: center;
+}
+
+.logo_title{
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ff3131;
+    
+}
+
+.logo_line{
+    height: 4rem;
+    background-color: #a6a6a6;
+    width: .3rem;
+    margin-left: 1rem; 
+
+    
+}
+
+.logo_para{   
+    color: #a6a6a6;
+
+}
+

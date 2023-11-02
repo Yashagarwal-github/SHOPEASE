@@ -1,0 +1,48 @@
+.ds_header{
+    height: 15rem;
+    width: 100%;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: flex-end;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-top: 1rem; 
+    
+}
+
+.ds_header span {
+    margin-right: 1rem; /* Add right margin to the text */
+  }
+
+
+.departmentalstore_items_section {
+    /* background-color: green; */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+}
+
+.departmentalstore_item{
+    margin: 2.5rem;
+    text-decoration: none;
+    margin-top: 5rem;
+    padding: .7rem;
+  }
+
+  .departmentalstore_name_modal{
+    color: black;
+    font-weight: 600;
+    margin-top: .5rem;
+    font-size: 1.1rem;
+
+  }
+
+  .departmentalstore_image{
+    width: 5rem;
+    height: 5rem;
+
+  }

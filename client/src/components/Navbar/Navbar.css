@@ -1,0 +1,85 @@
+.navbar_main{
+    background-color: #d9d9d9;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    justify-content: space-between;
+
+}
+
+.navbar_title{
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ff3131;
+}
+
+.title_line{
+    background-color: #a6a6a6;
+    width: .3rem;
+    height: 7rem;
+}
+
+.navbar_search{
+    width: 20rem;
+}
+
+.s button{
+    background-color: black;
+
+}
+
+:where(.css-dev-only-do-not-override-pr0fja).ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover{
+    background-color: #000;
+}
+
+
+.navbar_items{
+    display: flex;
+    justify-content: space-between;
+    width: 40rem;
+}
+
+.n_item{
+    margin-left: .5rem;
+    margin-right: .5rem;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: black;
+    font-weight: 500;
+}
+
+.n_item:hover{
+    color: #ff3131;
+}
+.navbar_location{
+    align-items: center;
+    font-weight: 500; 
+}
+.location_btn:hover{
+    color: #ff3131;
+}
+
+
+.location_btn{
+    text-decoration: none;
+    background-color: white;
+    padding: .5rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+    border-radius: 1rem;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.location_icon{
+    padding-right: .6rem;
+    font-size: 1rem;
+
+}
+
+.n_login_btn{
+    font-size: 3rem;
+    color: black;
+
+}

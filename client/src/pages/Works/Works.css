@@ -1,0 +1,33 @@
+.work_items{
+    display: flex;
+    height: 20rem;
+    justify-content: space-around;
+
+}
+
+.work_main{
+    margin-top: 6rem;
+}
+.work_item{
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.work_logo_section{
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+}
+
+.work_item_head{
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.work_item_para{
+    margin-top: .5rem;
+    font-size: 1rem;
+    font-weight: 450;
+}

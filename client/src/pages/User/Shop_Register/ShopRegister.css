@@ -1,0 +1,245 @@
+.login_page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.SR {
+  background-color: #fff;
+  margin: auto;
+  width: 50rem;
+  height: 48rem;
+  display: flex;
+}
+
+.Login {
+  padding: 2rem;
+  padding-bottom: 2rem;
+  font-family: "Poppins", sans-serif;
+  width: 30rem;
+  border: 0.2rem solid rgba(255, 145, 77, 1);
+}
+
+.mb-3 {
+  text-align: left;
+  font-size: 0.9rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.form_title {
+  margin-bottom: 0.5rem;
+  font-weight: bolder;
+}
+
+.l_button {
+  align-items: center;
+  background-color: #000000;
+  border: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  text-decoration: none;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.l_button:hover,
+.l_button:focus {
+  background-color: rgb(80, 80, 80);
+  color: #ffffff;
+}
+
+.l_button:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, 0.7);
+}
+
+.l_button:disabled {
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.para {
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.login_button {
+  margin-top: 0.8rem;
+}
+
+.Login h2 {
+  margin-bottom: 1rem;
+  font-family: "Noto Sans Duployan", sans-serif;
+  font-size: 2.4rem;
+}
+
+.para_a {
+  font-weight: 600;
+}
+
+input:focus {
+  background-color: transparent;
+}
+
+.SR_orange_section {
+  background: rgb(255, 49, 49);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 49, 49, 1) 20%,
+    rgba(255, 145, 77, 1) 100%
+  );
+  height: 48rem;
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SR_orange_subsection {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 500;
+  width: 18rem;
+}
+
+.orange_subsection span {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.Login .last_line {
+  background-color: black;
+  width: 30rem;
+  height: 0.1rem;
+  margin-top: 1.1rem;
+}
+
+.form_SR_inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.SR_icon {
+  text-align: center;
+  font-size: 7rem;
+}
+
+.SR_page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4rem;
+}
+.SR_LOGO {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.SR_register_btn {
+  align-items: center;
+  background-color: #000000;
+  border: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  text-decoration: none;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  margin-top: 2rem;
+}
+
+.SR_not_login {
+  justify-content: center;
+  display: flex;
+}
+
+.SR_not_login_btn {
+  align-items: center;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  text-decoration: none;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.r_btn {
+  color: red;
+  text-decoration: none;
+}

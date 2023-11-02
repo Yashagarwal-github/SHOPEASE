@@ -1,0 +1,120 @@
+/* Modal.css */
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    animation: slide-down 1.2s ease;
+    width: 60rem;
+    height: 40rem;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+  }
+  
+  @keyframes slide-down {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .location_main{
+    /* background-color: red; */
+    width: 60rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .location_main span{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: .3rem;
+  }
+
+  .location_input{
+    background-color: #e8e6e6;
+    width: 40rem;
+    height: 2.3rem;
+    font-size: 1rem !important;
+    margin-top: 2rem;
+  }
+
+ .modal_location_icon{
+    font-size: 1.2rem !important;
+    padding-bottom: 2.3rem;
+    padding-right: .5rem;
+
+
+
+  }
+
+  .top_cities{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cities_items_section {
+    /* background-color: green; */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+}
+
+  .city_item{
+    margin: 1.4rem;
+  }
+
+.cities_items_section img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.Location_Section_LOGO{
+  /* background-color: yellow; */
+  justify-content: center;
+  display: flex;
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+
+}
+
+
+:where(.css-dev-only-do-not-override-pr0fja).ant-input-affix-wrapper >input.ant-input {
+    padding: 0;
+    font-size: inherit;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background-color: #e8e6e6;
+}
