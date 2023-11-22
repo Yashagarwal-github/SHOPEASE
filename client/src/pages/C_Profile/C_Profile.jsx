@@ -34,7 +34,7 @@ const C_Profile = () => {
   const [deliveryOption, setDeliveryOption] = useState('');
   const [shopDescription, setShopDescription] = useState('');
   const [productsAndServices, setProductsAndServices] = useState('');
-  
+
 
   const handleAddress = (e) => {
     setAddress(e.target.value);
@@ -62,44 +62,21 @@ const C_Profile = () => {
     try {
 
       const response = await axios.post('http://localhost:3001/update-profile', {
-          full_name,
-          email,
-          number,
-          shop_name,
-          city,
-          area,
-          type,
-          category,
-          address,
-          timing,
-          deliveryOption,
-          shopDescription,
-          productsAndServices,
+        full_name,
+        email,
+        number,
+        shop_name,
+        city,
+        area,
+        type,
+        category,
+        address,
+        timing,
+        deliveryOption,
+        shopDescription,
+        productsAndServices,
       });
-
-
-
-      // const response = await axios.post(
-      //   'http://localhost:3001/update-profile',
-      //   {
-      //     body: JSON.stringify({
-      //       full_name,
-      //       email,
-      //       number,
-      //       shop_name,
-      //       city,
-      //       area,
-      //       type,
-      //       category,
-      //       address,
-      //       timing,
-      //       deliveryOption,
-      //       shopDescription,
-      //       productsAndServices,
-      //     })
-
-      //   }
-      // );
+      
       console.log("printing data");
       console.log(full_name);
       console.log(response.data);
@@ -111,16 +88,6 @@ const C_Profile = () => {
       console.error(error);
     }
   };
-
-
-  
-
-  
-
-  
-
-  
-
 
   return (
     <div className="c_profile">
@@ -148,6 +115,7 @@ const C_Profile = () => {
                       name="first_name"
                       type="text"
                       value={shopdetails.first_name + " " + shopdetails.last_name}
+                      readOnly={true}
                     />
                   </div>
 
@@ -158,6 +126,7 @@ const C_Profile = () => {
                       name="last_name"
                       type="text"
                       value={shopdetails.email}
+                      readOnly={true}
                     />
                   </div>
                 </div>
@@ -172,6 +141,7 @@ const C_Profile = () => {
                       name="first_name"
                       type="text"
                       value={shopdetails.number}
+                      readOnly={true}
                     />
                   </div>
 
@@ -182,6 +152,7 @@ const C_Profile = () => {
                       name="last_name"
                       type="text"
                       value={shopdetails.shop_name}
+                      readOnly={true}
                     />
                   </div>
                 </div>
@@ -197,6 +168,7 @@ const C_Profile = () => {
                       type="text"
                       placeholder="Eg. Jaipur, Rajasthan"
                       value={shopdetails.city}
+                      readOnly={true}
                     />
                   </div>
 
@@ -208,6 +180,7 @@ const C_Profile = () => {
                       type="text"
                       placeholder="eg. Vidhyadhar Nagar"
                       value={shopdetails.area}
+                      readOnly={true}
                     />
                   </div>
                 </div>
@@ -222,6 +195,7 @@ const C_Profile = () => {
                       name="first_name"
                       type="text"
                       value={shopdetails.type}
+                      readOnly={true}
                     />
                   </div>
 
@@ -233,6 +207,7 @@ const C_Profile = () => {
                       type="text"
                       placeholder="Category of Selected Business Type"
                       value={shopdetails.category}
+                      readOnly={true}
                     />
                   </div>
                 </div>

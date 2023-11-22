@@ -1,0 +1,29 @@
+.cards {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #d9d9d9;
+    border: 1px solid white;
+    padding: 0.2rem 2rem;
+    height: 300px;
+    width: 350px;
+    margin-bottom: 2.5rem;
+}
+
+.cards h2, .cards h6 {
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.thumbnail {
+    height: 6rem;
+    width: 6rem;
+    background-color: white;
+    margin: 1rem 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+

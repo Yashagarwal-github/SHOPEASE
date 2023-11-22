@@ -14,6 +14,7 @@ import ShopRegister from './pages/User/Shop_Register/ShopRegister.jsx';
 import Advertise from './pages/Advertise/Advertise';
 import DepartmentalStore from './pages/Category_Pages/Departmental_Store/DepartmentalStore';
 import C_Profile from './pages/C_Profile/C_Profile';
+import Products from './pages/Products/Products'
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path='/advertise-with-us' element={<Advertise/>}/>
           <Route path="/DepartmentalStore" element={<DepartmentalStore/>}/>
           <Route path="/shop_profile" element={<C_Profile/>}/>
-
+          <Route path="/products" element={<Products/>}/>
         </Routes>
       </Router>
       

@@ -172,6 +172,59 @@ app.get('/shop-details/:number', async (req, res) => {
 
 
 
+// app.post('/update-profile', async (req, res) => {
+//   try {
+//     const {
+//       full_name,
+//       email,
+//       number,
+//       shop_name,
+//       city,
+//       area,
+//       type,
+//       category,
+//       address,
+//       timing,
+//       deliveryOption,
+//       shopDescription,
+//       productsAndServices,
+//     } = req.body;
+//     // console.log(req.body.body.full_name);
+//     const existingProfile = await ProfileModel.findOne({ number });
+
+//     console.log(deliveryOption);
+
+//     // if (existingProfile) {
+//     //   return res.status(400).json({ message: "existingProafile" });
+//     // }
+
+//     // Create a new profile entry using the ProfileModel
+//     const newProfile = new ProfileModel({
+//       full_name,
+//       email,
+//       number,
+//       shop_name,
+//       city,
+//       area,
+//       type,
+//       category,
+//       address,
+//       timing,
+//       deliveryOption,
+//       shopDescription,
+//       productsAndServices
+//     });
+
+//     console.log(newProfile.shopDescription);
+
+//     await newProfile.save();
+
+//     res.status(201).json(newProfile);
+//   } catch (error) {
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
+
 app.post('/update-profile', async (req, res) => {
   try {
     const {
@@ -189,37 +242,50 @@ app.post('/update-profile', async (req, res) => {
       shopDescription,
       productsAndServices,
     } = req.body;
-    // console.log(req.body.body.full_name);
+
+    // Check if the profile with the given number already exists
     const existingProfile = await ProfileModel.findOne({ number });
 
-    console.log(deliveryOption);
+    if (existingProfile) {
+      // Update the existing profile with the new information
+      existingProfile.full_name = full_name;
+      existingProfile.email = email;
+      existingProfile.shop_name = shop_name;
+      existingProfile.city = city;
+      existingProfile.area = area;
+      existingProfile.type = type;
+      existingProfile.category = category;
+      existingProfile.address = address;
+      existingProfile.timing = timing;
+      existingProfile.deliveryOption = deliveryOption;
+      existingProfile.shopDescription = shopDescription;
+      existingProfile.productsAndServices = productsAndServices;
 
-    // if (existingProfile) {
-    //   return res.status(400).json({ message: "existingProafile" });
-    // }
+      await existingProfile.save();
 
-    // Create a new profile entry using the ProfileModel
-    const newProfile = new ProfileModel({
-      full_name,
-      email,
-      number,
-      shop_name,
-      city,
-      area,
-      type,
-      category,
-      address,
-      timing,
-      deliveryOption,
-      shopDescription,
-      productsAndServices
-    });
+      res.status(200).json(existingProfile);
+    } else {
+      // If the profile doesn't exist, create a new one
+      const newProfile = new ProfileModel({
+        full_name,
+        email,
+        number,
+        shop_name,
+        city,
+        area,
+        type,
+        category,
+        address,
+        timing,
+        deliveryOption,
+        shopDescription,
+        productsAndServices
+      });
 
-    console.log(newProfile.shopDescription);
+      await newProfile.save();
 
-    await newProfile.save();
-
-    res.status(201).json(newProfile);
+      res.status(201).json(newProfile);
+    }
   } catch (error) {
     res.status(500).json({ message: 'Internal server error' });
   }

@@ -1,0 +1,199 @@
+.products {
+    /* background-color: #d9d9d9; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.p-body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; */
+    /* background-color: yellow; */
+}
+
+.left {
+    /* width: 20%; */
+    /* height: 100%; */
+    flex: 2;
+    overflow-y: auto;
+    /* background-color: red; */
+    padding: 2.5rem 2.5rem;
+}
+
+.left .content {
+
+    /* background-color: #d9d9d9; */
+    /* border: 1px solid white; */
+}
+
+.right {
+    /* width: 80%; */
+    /* height: 100vh; */
+    flex: 8;
+    overflow-y: auto;
+    /* background-color: green; */
+    padding-top: 2.5rem;
+}
+
+/* Optional: Style scrollbar */
+.left::-webkit-scrollbar,
+.right::-webkit-scrollbar {
+    width: 10px;
+}
+
+.left::-webkit-scrollbar-thumb,
+.right::-webkit-scrollbar-thumb {
+    background-color: #3498db;
+    /* Adjust the scrollbar thumb color */
+}
+
+.left::-webkit-scrollbar-track,
+.right::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Adjust the scrollbar track color */
+}
+
+
+/* .area {
+    background-color: #d9d9d9;
+    border: 1px solid white;
+    justify-content: left;
+    align-items: left;
+    display: flex;
+    padding-left: 25%;
+} */
+
+.area {
+    display: flex;
+    align-items: center;
+    /* padding-left: 25%; */
+    /* background-color: pink; */
+    margin-top: 0.3rem;
+}
+
+.area input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 20px;
+    /* Adjust the height as needed */
+    width: 20px;
+    /* Adjust the width as needed */
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    /* Add a border for visual separation (optional) */
+}
+
+.area input[type="checkbox"]:checked::before {
+    content: '\2713';
+    /* Unicode checkmark character */
+    font-size: 16px;
+    /* Adjust the font size of the checkmark */
+    font-weight: bold;
+    /* Make the checkmark bolder */
+    color: #333;
+    /* Adjust the color of the checkmark */
+    position: relative;
+    top: 1px;
+    left: 2px;
+    /* Adjust the horizontal positioning of the checkmark
+  }
+
+.area label {
+    /* font-size: 16px; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    /* Adjust the max-width as needed */
+}
+
+.area label:hover {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    position: relative;
+    z-index: 1;
+}
+
+/* Optional: Style the tooltip */
+/* .area label:hover:after {
+    content: attr(for);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+} */
+
+
+.left .content .heading h1 {
+    /* background-color: pink; */
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.left .line {
+    height: 5px;
+    background-color: #d9d9d9;
+    margin-bottom: 8px;
+}
+
+.left .locations {
+    background-color: #d9d9d9;
+}
+
+.left .locations h1 {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.locations .body {
+    /* background-color: red; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.left h2 {
+    /* background-color: pink; */
+    text-align: left;
+}
+
+.search_bar input[type="text"] {
+    display: flex;
+    border: none;
+    /* Remove the border */
+    outline: none;
+    /* Remove the outline when focused */
+    padding: 8px;
+    /* Add some padding for visual appeal (adjust as needed) */
+    width: 100%;
+
+    box-sizing: border-box;
+    /* Include padding and border in the total width */
+    border-radius: 5px;
+    /* Make the borders round (adjust the radius as needed) */
+}
+
+
+.right .row {
+    margin: 15px 15px;
+    /* background-color: red; */
+}
+
+.right .card {
+    margin: 15px 15px;
+}
