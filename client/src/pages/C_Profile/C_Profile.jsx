@@ -77,37 +77,19 @@ const C_Profile = () => {
           productsAndServices,
       });
 
-
-
-      // const response = await axios.post(
-      //   'http://localhost:3001/update-profile',
-      //   {
-      //     body: JSON.stringify({
-      //       full_name,
-      //       email,
-      //       number,
-      //       shop_name,
-      //       city,
-      //       area,
-      //       type,
-      //       category,
-      //       address,
-      //       timing,
-      //       deliveryOption,
-      //       shopDescription,
-      //       productsAndServices,
-      //     })
-
-      //   }
-      // );
-      console.log("printing data");
-      console.log(full_name);
-      console.log(response.data);
-      alert("Student profile updated successfully!");
+      const data = await response.json();
+      if(data.status == 400){
+        alert("Shop profile already present!");
+      }
+      else{
+        alert("Shop profile updated successfully!");
+      }
       // }
     } catch (error) {
+      // const data = await response.json();
+      
       console.log('ero')
-      console.log(full_name);
+      // console.log(full_name);
       console.error(error);
     }
   };

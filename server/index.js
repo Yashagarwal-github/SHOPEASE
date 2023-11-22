@@ -194,9 +194,9 @@ app.post('/update-profile', async (req, res) => {
 
     console.log(deliveryOption);
 
-    // if (existingProfile) {
-    //   return res.status(400).json({ message: "existingProafile" });
-    // }
+    if (existingProfile) {
+      return res.status(400).json({ message: "existingProafile" });
+    }
 
     // Create a new profile entry using the ProfileModel
     const newProfile = new ProfileModel({
