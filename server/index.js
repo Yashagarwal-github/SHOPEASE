@@ -261,7 +261,13 @@ app.post('/update-profile', async (req, res) => {
       existingProfile.shopDescription = shopDescription;
       existingProfile.productsAndServices = productsAndServices;
 
+<<<<<<< HEAD
       await existingProfile.save();
+=======
+    if (existingProfile) {
+      return res.status(400).json({ message: "existingProafile" });
+    }
+>>>>>>> b53f1299842321db4b2b90fb229f4d1b8a7bd7bf
 
       res.status(200).json(existingProfile);
     } else {

@@ -83,8 +83,10 @@ const C_Profile = () => {
       alert("Student profile updated successfully!");
       // }
     } catch (error) {
+      // const data = await response.json();
+      
       console.log('ero')
-      console.log(full_name);
+      // console.log(full_name);
       console.error(error);
     }
   };
