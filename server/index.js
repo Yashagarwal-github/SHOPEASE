@@ -2,11 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 const UserModel = require("../server/models/userModel");
 const ShopModel = require("./models/shopModel");
 const ProfileModel = require("./models/profileModal");
-var bodyParser = require('body-parser');
+var bodyParser = require("body-parser");
 
 const app = express();
 app.use(express.json());
@@ -39,7 +39,7 @@ app.post("/signup", async (req, res) => {
   UserModel.findOne({ email: email }).then((user) => {
     if (user) {
       return res.json({
-        Status: "oldUser"
+        Status: "oldUser",
       });
     } else {
       bcrypt
@@ -106,17 +106,18 @@ app.post("/register-shop", async (req, res) => {
     // Send a success response back to the client
     const response = {
       success: true,
-      message: 'Shop registration successful',
+      message: "Shop registration successful",
       data: newShop,
     };
     res.status(200).json(response);
   } catch (error) {
-    console.error('Shop registration failed:', error);
+    console.error("Shop registration failed:", error);
 
     // Send an error response to the client
-    res.status(500).json({ success: false, message: 'Shop registration failed' });
+    res
+      .status(500)
+      .json({ success: false, message: "Shop registration failed" });
   }
-
 });
 
 app.post("/change_password/:userId", async (req, res) => {
@@ -125,7 +126,7 @@ app.post("/change_password/:userId", async (req, res) => {
     const { currentPassword, newPassword } = req.body;
     const user = await UserModel.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
     const passwordMatch = await bcrypt.compare(currentPassword, user.password);
@@ -139,10 +140,9 @@ app.post("/change_password/:userId", async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Failed to change password' });
+    res.status(500).json({ message: "Failed to change password" });
   }
 });
-
 
 // app.get('/get_profile', (req, res) => {
 //   ProfileModel.find({}, (err, details) => {
@@ -155,22 +155,22 @@ app.post("/change_password/:userId", async (req, res) => {
 //   });
 // });
 
-app.get('/shop-details/:number', async (req, res) => {
+app.get("/shop-details/:email", async (req, res) => {
   try {
-    const mobileNumber = req.params.number;
-    const shopDetails = await ShopModel.findOne({ number: mobileNumber }).exec();
+    const userEmail = req.params.email;
+    const shopDetails = await ShopModel.findOne({
+      email: userEmail,
+    }).exec();
     if (shopDetails) {
       res.json(shopDetails);
     } else {
-      res.status(404).send('Shop details not found.');
+      res.status(404).send("Shop details not found.");
     }
   } catch (err) {
     console.error(err);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 });
-
-
 
 // app.post('/update-profile', async (req, res) => {
 //   try {
@@ -225,7 +225,7 @@ app.get('/shop-details/:number', async (req, res) => {
 //   }
 // });
 
-app.post('/update-profile', async (req, res) => {
+app.post("/update-profile", async (req, res) => {
   try {
     const {
       full_name,
@@ -261,13 +261,7 @@ app.post('/update-profile', async (req, res) => {
       existingProfile.shopDescription = shopDescription;
       existingProfile.productsAndServices = productsAndServices;
 
-<<<<<<< HEAD
       await existingProfile.save();
-=======
-    if (existingProfile) {
-      return res.status(400).json({ message: "existingProafile" });
-    }
->>>>>>> b53f1299842321db4b2b90fb229f4d1b8a7bd7bf
 
       res.status(200).json(existingProfile);
     } else {
@@ -285,7 +279,7 @@ app.post('/update-profile', async (req, res) => {
         timing,
         deliveryOption,
         shopDescription,
-        productsAndServices
+        productsAndServices,
       });
 
       await newProfile.save();
@@ -293,9 +287,16 @@ app.post('/update-profile', async (req, res) => {
       res.status(201).json(newProfile);
     }
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
 
-
+app.get("/api/profiles", async (req, res) => {
+  try {
+    const profiles = await ProfileModel.find();
+    res.json(profiles);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./C_Profile.css";
-import { FaRegUser } from "react-icons/fa"
+import { FaRegUser } from "react-icons/fa";
 import { Input, message } from "antd";
 import axios from "axios";
 import Logo from "../../components/Logo/Logo";
@@ -9,16 +9,22 @@ const { TextArea } = Input;
 
 const C_Profile = () => {
 
+  const userEmail = JSON.parse(localStorage.getItem('user')).data.Email;
+  console.log("email sis ", userEmail)
   useEffect(() => {
     async function fetchShopDetails() {
-      const response = await axios.get('http://localhost:3001/shop-details/6377793312');
-      setShopDetails(response.data);
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/shop-details/${userEmail}`
+        );
+        setShopDetails(response.data);
+      } catch (error) {
+        console.error("Error fetching shop details:", error);
+      }
     }
 
     fetchShopDetails();
-    console.log('waiting');
-    console.log(fetchShopDetails());
-  }, []);
+  }, [userEmail]);
 
   const [shopdetails, setShopDetails] = useState([]);
   const full_name = shopdetails.first_name + " " + shopdetails.last_name;
@@ -29,12 +35,11 @@ const C_Profile = () => {
   const area = shopdetails.area;
   const type = shopdetails.type;
   const category = shopdetails.category;
-  const [address, setAddress] = useState('');
-  const [timing, setTiming] = useState('');
-  const [deliveryOption, setDeliveryOption] = useState('');
-  const [shopDescription, setShopDescription] = useState('');
-  const [productsAndServices, setProductsAndServices] = useState('');
-
+  const [address, setAddress] = useState("");
+  const [timing, setTiming] = useState("");
+  const [deliveryOption, setDeliveryOption] = useState("");
+  const [shopDescription, setShopDescription] = useState("");
+  const [productsAndServices, setProductsAndServices] = useState("");
 
   const handleAddress = (e) => {
     setAddress(e.target.value);
@@ -60,23 +65,25 @@ const C_Profile = () => {
     e.preventDefault();
 
     try {
+      const response = await axios.post(
+        "http://localhost:3001/update-profile",
+        {
+          full_name,
+          email,
+          number,
+          shop_name,
+          city,
+          area,
+          type,
+          category,
+          address,
+          timing,
+          deliveryOption,
+          shopDescription,
+          productsAndServices,
+        }
+      );
 
-      const response = await axios.post('http://localhost:3001/update-profile', {
-        full_name,
-        email,
-        number,
-        shop_name,
-        city,
-        area,
-        type,
-        category,
-        address,
-        timing,
-        deliveryOption,
-        shopDescription,
-        productsAndServices,
-      });
-      
       console.log("printing data");
       console.log(full_name);
       console.log(response.data);
@@ -84,8 +91,8 @@ const C_Profile = () => {
       // }
     } catch (error) {
       // const data = await response.json();
-      
-      console.log('ero')
+
+      console.log("ero");
       // console.log(full_name);
       console.error(error);
     }
@@ -100,7 +107,9 @@ const C_Profile = () => {
             <div className="c_profile_logo">
               <FaRegUser />
             </div>
-            <div className="c_full_name">{shopdetails.first_name + " " + shopdetails.last_name}</div>
+            <div className="c_full_name">
+              {shopdetails.first_name + " " + shopdetails.last_name}
+            </div>
             <div className="c_email">{shopdetails.email}</div>
           </div>
         </div>
@@ -116,7 +125,9 @@ const C_Profile = () => {
                       required
                       name="first_name"
                       type="text"
-                      value={shopdetails.first_name + " " + shopdetails.last_name}
+                      value={
+                        shopdetails.first_name + " " + shopdetails.last_name
+                      }
                       readOnly={true}
                     />
                   </div>
@@ -295,7 +306,11 @@ const C_Profile = () => {
                 />
               </div>
             </div>
-            <button type="submit" className="CP_form_btn" onClick={submitHandler}>
+            <button
+              type="submit"
+              className="CP_form_btn"
+              onClick={submitHandler}
+            >
               Submit
             </button>
           </form>
@@ -305,9 +320,7 @@ const C_Profile = () => {
       <div className="SR_LOGO">
         <Logo />
       </div>
-
     </div>
-
   );
 };
 

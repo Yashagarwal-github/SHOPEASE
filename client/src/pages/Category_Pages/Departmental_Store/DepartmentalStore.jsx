@@ -1,38 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./DepartmentalStore.css";
 import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import categories from "../../../data/category";
 import departmentalstore from "../../../data/departmentalstore";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import Products from "../../Products/Products";
+import StoreContext from "../../Home/StoreContext";
 const DepartmentalStore = () => {
+  const { setStoreName } = useContext(StoreContext);
+  const navigate = useNavigate();
+
+  const goToProducts = (name) => {
+    setStoreName(name);
+    navigate("/products");
+  };
+
   return (
     <div className="ds_main">
       <Navbar />
       <div className="ds_header">
         <span>DEPARTMENTAL STORE</span>
-        {/* DEPARTMENTAL STORE */}
       </div>
       <div className="departmentalstore_items_section">
-        {departmentalstore.map((departmentalstore, index) => (
-          <Link
-            key={index}
-            className="departmentalstore_item"
-            to={departmentalstore.page}
-          >
+        {departmentalstore.map((department, index) => (
+          <div key={index} className="departmentalstore_item">
             <img
               className="departmentalstore_image"
-              src={departmentalstore.image}
-              alt={departmentalstore.name}
+              src={department.image}
+              alt={department.name}
+              onClick={() => goToProducts(department.name)}
             />
-            <div className="departmentalstore_name_modal">
-              {departmentalstore.name}
+            <div
+              className="departmentalstore_name_modal"
+              onClick={() => goToProducts(department.name)}
+            >
+              {department.name}
             </div>
-          </Link>
+          </div>
         ))}
       </div>
-
       <Footer />
     </div>
   );
