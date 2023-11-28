@@ -34,8 +34,8 @@ function App() {
             <Route path="/advertise-with-us" element={<Advertise />} />
             <Route path="/DepartmentalStore" element={<DepartmentalStore />} />
             <Route path="/shop_profile" element={<C_Profile />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/shop-details" element={<ShopDetails />} />
+            <Route path="/products/:storeName" element={<Products />} />
+            <Route path="/shop-details/:number" element={<ShopDetails />} />
           </Routes>
         </StoreContext.Provider>
       </Router>

@@ -12,9 +12,9 @@ const DepartmentalStore = () => {
   const navigate = useNavigate();
 
   const goToProducts = (name) => {
-    setStoreName(name);
-    navigate("/products");
+    navigate(`/products/${name}`);
   };
+  
 
   return (
     <div className="ds_main">

@@ -7,6 +7,9 @@ const UserModel = require("../server/models/userModel");
 const ShopModel = require("./models/shopModel");
 const ProfileModel = require("./models/profileModal");
 var bodyParser = require("body-parser");
+const multer = require("multer");
+const Advertisement = require("./models/advertisementModal");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -291,12 +294,97 @@ app.post("/update-profile", async (req, res) => {
   }
 });
 
-
 app.get("/api/profiles", async (req, res) => {
   try {
     const profiles = await ProfileModel.find();
     res.json(profiles);
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+});
+
+// app.get("/shop-details/:number", async (req, res) => {
+//   try {
+//     const userNumber = req.params.number;
+//     console.log("Requested Number:", userNumber); // Add this line for debugging
+//     const shopDetails = await ProfileModel.findOne({
+//       number: userNumber,
+//     }).exec();
+//     console.log("Shop Details:", shopDetails); // Add this line for debugging
+//     if (shopDetails) {
+//       res.json(shopDetails);
+//     } else {
+//       res.status(404).send("Shop details not found.");
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
+
+app.get("/api/profiles/:number", async (req, res) => {
+  try {
+    const userNumber = req.params.number;
+    const shopDetails = await ProfileModel.findOne({
+      number: userNumber,
+    }).exec();
+    if (shopDetails) {
+      res.json(shopDetails);
+    } else {
+      res.status(404).send("Shop details not found.");
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "uploads")); // Use an absolute path
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({ storage });
+
+app.use(express.json());
+// Serve the "uploads" directory statically
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Inside your server-side code
+app.post("/api/advertisements", upload.single("image"), async (req, res) => {
+  try {
+    const { shop_name, number, email } = req.body;
+    const imagePath = req.file ? req.file.filename : "";
+
+    const newAdvertisement = new Advertisement({
+      shop_name,
+      number,
+      email,
+      image: imagePath,
+    });
+
+    await newAdvertisement.save();
+    res.status(201).json({ message: "Advertisement added successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Route to fetch all advertisements
+app.get("/api/advertisements", async (req, res) => {
+  try {
+    const advertisements = await Advertisement.find();
+    res.json(advertisements);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });

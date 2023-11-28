@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Card from "../../components/Card/Card";
 import jaipur_areas from "./areas";
@@ -7,7 +7,7 @@ import StoreContext from "../Home/StoreContext";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import ShopDetails from "../../components/ShopDetails/ShopDetails";
-// import { useHistory } from "react-router-dom"; 
+import { useNavigate, useParams } from "react-router-dom";
 
 const Products = (props) => {
   const shops = [
@@ -44,10 +44,8 @@ const Products = (props) => {
 
   const [profiles, setProfiles] = useState([]);
 
-  
-
   const initialDisplayCount = 15;
-  const { storeName } = useContext(StoreContext);
+  // const { storeName } = useContext(StoreContext);
 
   const [areas, setAreas] = useState(
     jaipur_areas.slice(0, initialDisplayCount)
@@ -55,7 +53,12 @@ const Products = (props) => {
   const [showAll, setShowAll] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCheckboxes, setSelectedCheckboxes] = useState(new Set());
+  const { storeName } = useParams();
+  const { setStoreName } = useContext(StoreContext);
 
+  useEffect(() => {
+    setStoreName(storeName);
+  }, [storeName, setStoreName]);
 
   useEffect(() => {
     const fetchProfiles = async () => {
@@ -70,7 +73,7 @@ const Products = (props) => {
         console.error("Error fetching profiles:", error);
       }
     };
-  
+
     fetchProfiles();
   }, [storeName]);
   const handleViewMore = () => {
@@ -106,8 +109,13 @@ const Products = (props) => {
   };
   console.log(storeName);
 
+  const navigate = useNavigate();
+  const handleCardClick = (number) => {
+    console.log("Navigating to:", `/shop-details/${number}`);
+    navigate(`/shop-details/${number}`);
+  };
 
-//   const history = useHistory();
+  
   return (
     <>
       <Navbar />
@@ -158,16 +166,19 @@ const Products = (props) => {
 
           <div className="right">
             <div className="row">
-            {profiles.map((profile, index) => (
-            <div key={index} className="col-lg-4">
-              <Card
-                className="card"
-                title={profile.shop_name}
-                content={profile.address}
-                // onClick={() => history.push(`/shop-details/${profile.shop_name}`)}
-              />
-            </div>
-          ))}
+              {profiles.map((profile, index) => (
+                <div
+                  key={index}
+                  className="col-lg-4"
+                  onClick={() => handleCardClick(profile.number)}
+                >
+                  <Card
+                    className="card"
+                    title={profile.shop_name}
+                    content={profile.address}
+                  />
+                </div>
+              ))}
               {/* <Card className="col" title={"ayush"} content={"ranwa"}/>
                             <Card className="col" title={"ayush"} content={"ranwa"}/>
                             <Card className="col" title={"ayush"} content={"ranwa"}/> */}

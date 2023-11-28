@@ -1,13 +1,7 @@
 import React from "react";
-// import { useHistory } from "react-router-dom";
 import "./Card.css";
 
 const Card = ({ title, content }) => {
-//   const history = useHistory();
-
-//   const handleCardClick = (title) => {
-//     history.push(`/shop-details/${title}`); // Navigate to ShopDetails with the title
-//   };
 
   return (
     <div className="cards">

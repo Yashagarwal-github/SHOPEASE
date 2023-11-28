@@ -256,15 +256,7 @@ const C_Profile = () => {
 
               <div className="form_SR_inputs_c_profile">
                 <div className="mb-3_cp">
-                  <div className="form_title_cp">
-                    SHOP PHOTOS{" "}
-                    <Input
-                      required
-                      name="first_name"
-                      type="text"
-                      placeholder=""
-                    />
-                  </div>
+
 
                   <div className="form_title_cp">
                     DELIVERY OPTION*{" "}

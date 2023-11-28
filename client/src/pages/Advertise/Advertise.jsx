@@ -1,11 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Advertise.css";
 import Navbar from "../../components/Navbar/Navbar";
-import { Input } from "antd";
 import Logo from "../../components/Logo/Logo";
-const { TextArea } = Input;
+import axios from "axios";
+import { Input, Upload, Button, Form, message } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 
 const Advertise = () => {
+  const [form] = Form.useForm();
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    // Get the selected file from the input
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
+
+  const handleSubmit = async (values) => {
+    const formData = new FormData();
+    formData.append("shop_name", values.shop_name);
+    formData.append("number", values.number);
+    formData.append("email", values.email);
+    if (file) {
+      formData.append("image", file);
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/advertisements",
+        formData
+      );
+      console.log(response.data);
+      message.success("Advertisement submitted successfully");
+      form.resetFields(); // Reset the form after submission
+      setFile(null); // Reset the file state
+    } catch (error) {
+      console.error("Error submitting advertisement:", error.message);
+      message.error("Error submitting advertisement");
+    }
+  };
+
   return (
     <div className="advertise_main">
       <div>
@@ -30,52 +64,67 @@ const Advertise = () => {
         <div className="advertise_form_section">
           <span>Advertise With Us</span>
           <div className="advertise_form">
-            <form>
-              <div className="mb-3 advertise_inputs">
-                <div className="form_title form_title_a">BUSINESS NAME</div>
-                <div className="a_form_input">
-                  <Input required placeholder="Your Business Name" />
-                </div>
-              </div>
+            <Form
+              form={form}
+              onFinish={handleSubmit}
+              initialValues={{ shop_name: "", number: "", email: "" }}
+            >
+              {/* Other form fields */}
+              <Form.Item
+                label="SHOP NAME"
+                name="shop_name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter your business name",
+                  },
+                ]}
+              >
+                <Input placeholder="Your Business Name" />
+              </Form.Item>
 
-              <div className="mb-3 advertise_inputs">
-                <div className="form_title form_title_a">MOBILE</div>
-                <div className="a_form_input">
-                  <Input required placeholder="Input Mobile Number" />
-                </div>
-              </div>
+              <Form.Item
+                label="MOBILE"
+                name="number"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter your mobile number",
+                  },
+                ]}
+              >
+                <Input placeholder="Input Mobile Number" />
+              </Form.Item>
 
-              <div className="mb-3 advertise_inputs">
-                <div className="form_title form_title_a">EMAIL</div>
-                <div className="a_form_input">
-                  <Input required placeholder="Enter Your Email_Id" />
-                </div>
-              </div>
+              <Form.Item
+                label="EMAIL"
+                name="email"
+                rules={[{ required: true, message: "Please enter your email" }]}
+              >
+                <Input placeholder="Enter Your Email_Id" />
+              </Form.Item>
+              <Form.Item
+                label="IMAGE"
+                name="image"
+                rules={[{ required: true }]}
+              >
+                <input type="file" onChange={handleFileChange} />
+              </Form.Item>
 
-              <div className="mb-3 advertise_inputs">
-                <div className="form_title form_title_a">CITY</div>
-                <div className="a_form_input">
-                  <Input required placeholder="Input City of Business" />
-                </div>
-              </div>
-
-              <div className="mb-3  large_a_input">
-                <div className="form_title form_title_a">
-                  PRODUCT OR SERVICES
-                </div>
-                <div className="a_form_input">
-                <TextArea placeholder="Your Product or Service Description" rows={4} />
-                </div>
-              </div>
-              <button type="submit" className="l_button login_button a_submit_button">
-              SUBMIT
-            </button>
-            </form>
+              <Form.Item>
+                <button
+                  type="submit"
+                  className="l_button login_button a_submit_button"
+                >
+                  SUBMIT
+                </button>
+              </Form.Item>
+            </Form>
           </div>
         </div>
       </div>
-      <div className='Advetise_LOGO'>
-      <Logo/>
+      <div className="Advetise_LOGO">
+        <Logo />
       </div>
     </div>
   );

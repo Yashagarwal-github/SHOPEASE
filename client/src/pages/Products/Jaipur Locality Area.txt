@@ -13,6 +13,7 @@ Barkat Nagar
 Bhawani Singh Road
 Biseswarji
 Brahmapuri
+C Scheme
 Chandpol
 Civil Lines
 Durgapura
@@ -37,11 +38,13 @@ Mahesh Nagar
 Malviya Nagar
 Mansarovar
 Mirza Ismail Road
+MI Road
 Motidungri Marg
 Murlipura
 New Colony
 Pink City
 Raja Park
+Rambagh
 Ramganj
 Sanganer
 Sansar Chandra Road
